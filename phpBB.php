@@ -23,7 +23,7 @@
  *              'phpBB' => [
  *                  'class' => 'nill\forum\phpBB',
  *                  'path' => dirname(dirname(__DIR__)). '\forum',
-  ],
+ *              ],
  * 		...
  *
  * Using:
