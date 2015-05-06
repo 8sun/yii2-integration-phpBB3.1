@@ -16,7 +16,7 @@ Used
 Integration
 ============
 
-Part1: Install via Composer
+Part 1: Install via Composer
 --------------------
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
@@ -37,8 +37,6 @@ to the require section of your `composer.json` file.
 
 Install from an Archive File
 ----------------------------
-
-- Download and set phpBB-component-class
 
 - Add folder `/vendor/nill/forum/`
 
