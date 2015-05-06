@@ -10,32 +10,41 @@ About
 Used
 ----
 - Yii framework 2.x
-- Yii-Start Applications - yii2-start-users
+- Yii-Start Applications - yii2-start-users (https://github.com/vova07/yii2-users-module)
 - phpBB 3.1.x
 
 Integration
 ============
 
-Part 1: Download and set phpBB-component-class 
---------------------------
+Part1: Install via Composer
+--------------------
+
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+
+Either run
+
+```
+php composer.phar require nill/forum "dev-master"
+```
+
+or add
+
+```
+"nill/forum": "dev-master"
+```
+
+to the require section of your `composer.json` file.
+
+Install from an Archive File
+----------------------------
+
+- Download and set phpBB-component-class
 
 - Add folder `/vendor/nill/forum/`
 
 [Github: yii2-integration-phpBB3.1](https://github.com/8sun/yii2-integration-phpBB3.1)
 
 - Download and unpack files to created directory
-
-Part 2: Add component and set config
-----------------------------------------
-
-- Add component to config `/common/config/main.php`
-
-```
-        'phpBB' => [
-            'class' => 'nill\forum\phpBB',
-            'path' => dirname(dirname(__DIR__)). '\forum',
-        ],
-```
 
 - Add to extensions `/vendor/yiisoft/extensions.php`:
 
@@ -49,6 +58,18 @@ Part 2: Add component and set config
             '@nill/forum' => $vendorDir . '/nill/forum',
         ),
     ),
+```
+
+Part 2: Add component and set config
+----------------------------------------
+
+- Add component to config `/common/config/main.php`
+
+```
+        'phpBB' => [
+            'class' => 'nill\forum\phpBB',
+            'path' => dirname(dirname(__DIR__)). '\forum',
+        ],
 ```
 
 - Add `request` and change `user` to components configurations:
