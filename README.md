@@ -99,8 +99,8 @@ and
 ```
     /**
      * The variables required for integration with the forum
-     * @var string $password_reg - старый пароль (при смене пароля пользователем)
-     * @var string $password_new - новый пароль
+     * @var string $password_reg - old password
+     * @var string $password_new - new password
      */
     public $password_reg;
     public $password_new;

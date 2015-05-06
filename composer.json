@@ -1,0 +1,12 @@
+{
+    "name": "nill/forum",
+    "description": "yii2-integration-phpBB3.1",
+    "authors": [
+        {
+            "name": "Nill Mefistophell",
+            "email": "asklepiy@i.ua"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
