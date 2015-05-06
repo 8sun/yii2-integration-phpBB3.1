@@ -51,7 +51,7 @@ Part 2: Add component and set config
     ),
 ```
 
-- Add `request` and change `user` to components:
+- Add `request` and change `user` to components configurations:
 
 ```
         'user' => [
@@ -90,11 +90,9 @@ Part 4: Add behavior to user Model
 
 ####Change User Model
 
-- Add behaviors `behaviors\PhpBBUserBahavior.php` in folder user module: `\vendor\vova07\users\behaviors\`
-
 - Add this code to the top User class:
 
-`use vova07\users\behaviors\PhpBBUserBahavior;`
+`use nill\forum\behaviors\PhpBBUserBahavior;`
 
 and
 
@@ -157,5 +155,5 @@ and
 this string
 
 ```
-use nill\users\models\User;
+use vova07\users\models\User;
 ```
