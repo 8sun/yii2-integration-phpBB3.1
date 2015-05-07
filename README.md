@@ -231,6 +231,8 @@ ob_start();
 //************************  *********  **********************************
 ```
 
+>This code need used on all pages forum, exemple: viewforum.php, viewtopic.php...
+
 **4. Add in file `\forum\includes\functions.php` next code to end page_footer() function: (row:5310)**
 
 ```
