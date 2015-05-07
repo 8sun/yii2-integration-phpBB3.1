@@ -103,6 +103,7 @@ Part 3: Change forum settings
 
 - Change `frm_config` field `cookie_domain` on your domain: 
 **example** - `domain.loc`
+
 >CAUTION: This setting is also stored in a file, clear the cache if you are not working.
 
 Part 4: Add behavior to user Model
