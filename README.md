@@ -178,3 +178,79 @@ this string
 ```
 use vova07\users\models\User;
 ```
+
+
+FORUM in Template yii2
+============
+
+**1. Create in folder `\forum` file `yiiapp.php`**
+
+```
+defined('YII_DEBUG') or define('YII_DEBUG', true);
+defined('YII_ENV') or define('YII_ENV', 'dev');
+
+require(__DIR__ . '/../vendor/autoload.php');
+require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
+require(__DIR__ . '/../common/config/aliases.php');
+
+$config = yii\helpers\ArrayHelper::merge(
+    require(__DIR__ . '/../common/config/main.php'),
+    require(__DIR__ . '/../common/config/main-local.php'),
+    require(__DIR__ . '/../frontend/config/main.php'),
+    require(__DIR__ . '/../frontend/config/main-local.php')
+);
+
+if ('YII_ENV_DEV') {
+    $config['components']['assetManager']['basePath'] = '@app/web/assets';
+}
+
+\Yii::setAlias('@app', '/../');
+$application = new yii\web\Application($config);
+
+```
+
+**2. Create in folder `\frontend\views\layouts\` file `forum.php`. This tamplate forum.**
+
+- This tamplate forum. 
+
+```
+<?= $content ?>
+```
+
+**3. Add in top file `\forum\index.php` next code:**
+
+```
+//************************   FORUM Yii **********************************
+
+include "yiiapp.php";
+
+$controller = new yii\web\Controller('7','forum');
+ \Yii::$app->controller = $controller;
+ob_start();
+
+//************************  *********  **********************************
+```
+
+**4. Add in file `\forum\includes\functions.php` next code to end page_footer() function: (row:5310)**
+
+```
+garbage_collection();
+        
+//************************   FORUM Yii **********************************
+        if (class_exists('Yii', false) && \Yii::$app->controller !== null) {
+                $content = ob_get_clean();
+                echo \Yii::$app->controller->render('//layouts/forum', ['content' => $content]);
+        }
+//************************   ********** **********************************
+        
+	if ($exit_handler)
+	{
+		exit_handler();
+	}
+```
+
+>If not working then: 
+
+In file `forum\phpbb\request\request.php` change next:
+
+`protected $super_globals_disabled = false;` on `protected $super_globals_disabled = true;` (row:44)
