@@ -1,6 +1,6 @@
 <?php
 
-namespace nill\users\behaviors;
+namespace nill\forum\behaviors;
 
 use yii\db\ActiveRecord;
 
