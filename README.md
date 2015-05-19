@@ -1,6 +1,10 @@
 yii2-integration-phpBB3.1
 =========================
 
+This extension is intended to integrate the Forum with the Yii2. 
+It allows automatic registration of users from the site to the forum, as well as authorization, change email, password.
+An extension Yii2-users was used as a users model, but you can connect and configure the behavior of your model.
+
 About
 -----
 **Version:** 0.3.7
