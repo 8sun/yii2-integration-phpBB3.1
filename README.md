@@ -260,3 +260,28 @@ garbage_collection();
 In file `forum\phpbb\request\request.php` change next:
 
 `protected $super_globals_disabled = false;` on `protected $super_globals_disabled = true;` (row:44)
+
+
+Synchronization
+===============
+
+To synchronize need to do the relation between the users of the site and forum.
+
+Add to User model next row:
+---------------------------
+
+```
+use nill\forum\models\phpBBUsers;
+
+public function getPhpbbuser()
+{
+    return $this->hasOne(phpBBUsers::className(), ['username' => 'username']);
+}
+```
+
+Exemple view:
+
+```
+<?php $models = User::findOne(Yii::$app->user->id); ?>
+Your Messages <a href="/forum/ucp.php?i=pm&folder=inbox">New: <?php if($models) echo $models->phpbbuser->user_unread_privmsg; ?></a>
+```
