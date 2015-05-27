@@ -258,11 +258,33 @@ class phpbbClass {
             if (!$phpbb_vars["user_id"] = $this->get_user_id_from_name($phpbb_vars["username"])) {
                 return $phpbb_result;
             }
-        } else {
-            echo 'x';
         }
 
         $db->sql_query("UPDATE " . USERS_TABLE . " SET user_email = '" . $phpbb_vars["email"] . "' WHERE user_id = '" . $phpbb_vars["user_id"] . "'");
+        $phpbb_result = "SUCCESS";
+
+        return $phpbb_result;
+    }
+
+    public function user_change_avatar($phpbb_vars) {
+        global $phpbb_root_path, $phpEx, $db, $config, $user, $auth, $cache, $template;
+        //fail presumtion
+        $phpbb_result = "FAIL";
+
+        //general info
+        $this->init(false);
+
+        //user functions
+        require_once($phpbb_root_path . "includes/functions_user." . $phpEx);
+
+        //get user_id if possible
+        if (!isset($phpbb_vars["user_id"])) {
+            if (!$phpbb_vars["user_id"] = $this->get_user_id_from_name($phpbb_vars["username"])) {
+                return $phpbb_result;
+            }
+        }
+
+        $db->sql_query("UPDATE " . USERS_TABLE . " SET user_avatar = '" . $phpbb_vars["avatar"] . "', user_avatar_type = 'avatar.driver.upload' WHERE user_id = '" . $phpbb_vars["user_id"] . "'");
         $phpbb_result = "SUCCESS";
 
         return $phpbb_result;

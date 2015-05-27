@@ -138,6 +138,14 @@ class phpBB extends Component {
 
         return $this->_phpbb->user_change_email($phpbb_vars);
     }
+    
+    public function changeAvatar($user, $avatar) {
+        $phpbb_vars = is_int($user) ? array("user_id" => $user) : array("username" => $user);
+
+        $phpbb_vars['avatar'] = $avatar;
+
+        return $this->_phpbb->user_change_avatar($phpbb_vars);
+    }
 
     /**
      * Test if user is logged in phpBB
