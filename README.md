@@ -213,9 +213,9 @@ $application = new yii\web\Application($config);
 
 ```
 
-**2. Create in folder `\frontend\views\layouts\` file `forum.php`. This tamplate forum.**
+**2. Create in folder `\frontend\views\layouts\` file `forum.php`. This template forum.**
 
-- This tamplate forum. 
+- This template forum. 
 
 ```
 <?= $content ?>
