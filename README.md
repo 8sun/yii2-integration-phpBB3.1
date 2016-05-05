@@ -9,7 +9,7 @@ About
 -----
 **Version:** 0.3.7
 
-**Authors:** yiiframework.ru, Felix Manea, Дмитрий Елисеев, Mefistophell Nill
+**Authors:** yiiframework.ru, Felix Manea, Г„Г¬ГЁГІГ°ГЁГ© Г…Г«ГЁГ±ГҐГҐГў, Mefistophell Nill
 
 Used
 ----
@@ -174,8 +174,8 @@ and
     }
 ```
 
-- Comment or delete in `\vendor\nill\users\models\frontend\PasswordForm.php`
-- Comment or delete in `\vendor\nill\users\models\frontend\Email.php`
+- Comment or delete in `\vendor\vova07\users\models\frontend\PasswordForm.php`
+- Comment or delete in `\vendor\vova07\users\models\frontend\Email.php`
 
 this string
 
