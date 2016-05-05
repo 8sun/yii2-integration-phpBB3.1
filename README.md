@@ -108,7 +108,7 @@ Part 3: Change forum settings
 - To find and change in table `frm_config` database field `cookie_domain` on your domain: 
 **example** - `domain.loc`
 
->CAUTION: This option also is in a cache file, clear your cache if don't work.
+>CAUTION: This option also is in a cache file, сlear your cache if will not work.
 
 Part 4: Add behavior to user Model
 ----------------------------------
