@@ -2,7 +2,7 @@ yii2-integration-phpBB3.1
 =========================
 
 This extension is intended to integrate the phpBB 3.1.x with the Yii2. 
-It allows automatic registration of users from the site to the forum, as well as authorization, change email, password.
+Extension is intended for synchronization of a login, registration and editing of profile data, such as an e-mail address and  password. 
 An extension [yii2-users-module](https://github.com/vova07/yii2-users-module) was used as a users model, but you can connect and configure the behavior of your model.
 
 About
@@ -46,7 +46,7 @@ Install from an Archive File
 
 [Github: yii2-integration-phpBB3.1](https://github.com/8sun/yii2-integration-phpBB3.1)
 
-- Download and unpack files to created directory
+- Download and unpack files into created directory
 
 - Add to extensions `/vendor/yiisoft/extensions.php`:
 
@@ -62,7 +62,7 @@ Install from an Archive File
     ),
 ```
 
-Part 2: Add component and set config
+Part 2: Add a component and set configurations
 ----------------------------------------
 
 - Add component to config `/common/config/main.php`
@@ -74,7 +74,7 @@ Part 2: Add component and set config
         ],
 ```
 
-- Add `request` and change `user` to components configurations:
+- Add the `request` and change the `user` in configuration of components:
 
 ```
         'user' => [
@@ -89,10 +89,10 @@ Part 2: Add component and set config
         ],
 ```
 
-Part 3: Change forum settings
+Part 3: Change a forum settings
 --------------------------
 
-- Change method `get_container_filename()` in `\forum\phpbb\di\container_builder.php`
+- Change the method `get_container_filename()` into `\forum\phpbb\di\container_builder.php`
 
 ```
     protected function get_container_filename() {
@@ -105,17 +105,17 @@ Part 3: Change forum settings
     }
 ```
 
-- To find and change in table `frm_config` database field `cookie_domain` on your domain: 
+- Find and change in the table `frm_config` database field `cookie_domain` to your domain: 
 **example** - `domain.loc`
 
->CAUTION: This option also is in a cache file, сlear your cache if will not work.
+>CAUTION: This option also is in a cache file, clear your cache if will not work.
 
 Part 4: Add behavior to user Model
 ----------------------------------
 
 ####Change User Model
 
-- Add this code to the top User class:
+- Add this code to the top of User class:
 
 `use nill\forum\behaviors\PhpBBUserBahavior;`
 
@@ -131,7 +131,7 @@ and
     public $password_new;
 ```
 
-- Add or change this code before method `getId`
+- Add or change this code before the method `getId`
 
 ```
     /**
@@ -139,9 +139,6 @@ and
      */
     public function behaviors() {
         return [
-            'timestampBehavior' => [
-                'class' => TimestampBehavior::className(),
-            ],
             'PhpBBUserBahavior' => [
                 'class' => PhpBBUserBahavior::className(),
                 'userAttr' => 'username',
@@ -153,7 +150,9 @@ and
     }
 ```
 
-- Change next methods: 
+>If you use yii2-start-users then do following instructions
+
+- Change the following methods:
 
 ```
     public function validatePassword($password) {
@@ -187,7 +186,7 @@ use vova07\users\models\User;
 FORUM in Template yii2
 ============
 
-**1. Create in folder `\forum` file `yiiapp.php`**
+**1. Create into the folder `\forum` the file `yiiapp.php`**
 
 ```
 defined('YII_DEBUG') or define('YII_DEBUG', true);
@@ -213,15 +212,13 @@ $application = new yii\web\Application($config);
 
 ```
 
-**2. Create in folder `\frontend\views\layouts\` file `forum.php`. This template forum.**
-
-- This template forum. 
+**2. Create into the folder `\frontend\views\layouts\` the file `forum.php`. This template forum.**
 
 ```
 <?= $content ?>
 ```
 
-**3. Add in top file `\forum\index.php` next code:**
+**3. Add to top of the file `\forum\index.php` the following code:
 
 ```
 //************************   FORUM Yii **********************************
@@ -235,9 +232,9 @@ ob_start();
 //************************  *********  **********************************
 ```
 
->This code need used on all pages forum, exemple: viewforum.php, viewtopic.php...
+>This code should be used to the all general pages of the forum, such as: viewforum.php, viewtopic.php...
 
-**4. Add in file `\forum\includes\functions.php` next code to end page_footer() function: (row:5310)**
+**4. Add to the file `\forum\includes\functions.php` the following code into the end of page_footer() function: (row:5310)**
 
 ```
 garbage_collection();
@@ -255,9 +252,9 @@ garbage_collection();
 	}
 ```
 
->If not working then: 
+>If will not work then: 
 
-In file `forum\phpbb\request\request.php` change next:
+In the file `forum\phpbb\request\request.php`chang the following string:
 
 `protected $super_globals_disabled = false;` on `protected $super_globals_disabled = true;` (row:44)
 
@@ -265,9 +262,9 @@ In file `forum\phpbb\request\request.php` change next:
 Synchronization
 ===============
 
-To synchronize need to do the relation between the users of the site and forum.
+Synchronization is necessary for a relation between the users of the site and the forum.
 
-Add to User model next row:
+Add to User model the following row:
 ---------------------------
 
 ```
